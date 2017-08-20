@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class RemoteManager {
     private static Map<String, Class> classMap = new HashMap<>();
-    public static void register( Class dataClass) {
+    public static void register(Class dataClass) {
         String action = RemoteManager.getAction(dataClass);
         classMap.put(action, dataClass);
     }
@@ -26,4 +26,6 @@ public class RemoteManager {
         DataAction dataAction = (DataAction) dataClass.getAnnotation(DataAction.class);
         return dataAction.actionName();
     }
+
+
 }

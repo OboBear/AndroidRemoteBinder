@@ -1,1 +1,1 @@
-include ':app', ':remotetransferlib'
+include ':app', ':remotetransferlib', ':remoteeventbus'
