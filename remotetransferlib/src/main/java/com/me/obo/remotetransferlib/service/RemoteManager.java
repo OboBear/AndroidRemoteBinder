@@ -1,7 +1,12 @@
 package com.me.obo.remotetransferlib.service;
 
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+
 import com.me.obo.remotetransferlib.annotation.DataAction;
-import com.me.obo.remotetransferlib.test.TestSendData;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +23,23 @@ public class RemoteManager {
         classMap.put(action, dataClass);
     }
 
+    public static void init(Context context) {
+        ComponentName componentName = new ComponentName(context, "com.me.obo.remotetransferlib.service.RemoteService");
+        Intent intent = new Intent();
+        intent.setComponent(componentName);
+        context.bindService(intent, new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+
+            }
+        }, Context.BIND_AUTO_CREATE);
+    }
+
     public static Class getClass(String action) {
         return classMap.get(action);
     }
@@ -26,6 +48,4 @@ public class RemoteManager {
         DataAction dataAction = (DataAction) dataClass.getAnnotation(DataAction.class);
         return dataAction.actionName();
     }
-
-
 }

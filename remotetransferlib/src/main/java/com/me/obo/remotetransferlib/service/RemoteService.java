@@ -7,9 +7,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.me.obo.remotetransferlib.annotation.DataAction;
 import com.me.obo.remotetransferlib.binder.BinderService;
-import com.me.obo.remotetransferlib.data.RemoteData;
 import com.me.obo.remotetransferlib.test.TestSendData;
 
 /**
